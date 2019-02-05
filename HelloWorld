@@ -1,0 +1,25 @@
+namespace bchristanto_inclass01
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /*
+             * in-class 01
+             * Hello World
+             * By: Becky Christanto
+             */
+
+            // Display "Hello, World!" to a console
+            Console.WriteLine("Hello, World!");
+
+            // Add a blank line
+            Console.WriteLine();
+
+            // Ask the user to push a key
+            // Wait for key press
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+    }
+}
