@@ -1,0 +1,93 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_inclass03
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /* 
+             * In Class 03
+             * String Output & Accepting User Input
+             * By: Becky Christanto
+             */
+
+            string firstName = "Becky";
+            string lastName = "Christanto";
+
+            Console.WriteLine(firstName);
+            Console.WriteLine(lastName);
+
+            string fullName = firstName + " " + lastName;
+
+            Console.WriteLine("My name is " + fullName + ".");
+
+            //shows different methods of formatting string using variables
+            string output1 = "My name is " + firstName + " " + lastName + ".";
+            string output2 = String.Format("My name is {0} {1}.",firstName,lastName);
+            string output3 = String.Format($"My name is {firstName} {lastName}.");
+
+            Console.WriteLine(output1);
+            Console.WriteLine(output2);
+            Console.WriteLine(output3);
+
+            string profName = "Greg Morris";
+
+            int myAge = 30;
+            int profAge = 40;
+
+            //displays the age and name of me and the professor around "|" with right alignment
+            Console.WriteLine("{0,30} | {1,5}.",fullName,myAge);
+            Console.WriteLine("{0,30} | {1,5}.",profName,profAge);
+            
+            //displays the age and name of me and the professor around "|" with left alignment
+            Console.WriteLine("{0,-30} | {1,-5}.", fullName, myAge);
+            Console.WriteLine("{0,-30} | {1,-5}.", profName, profAge);
+
+            double number = 123.456;
+
+            //formats number to currency and displays in a string
+            Console.WriteLine("The number is {0,10}.", number.ToString("C"));
+
+            //displays the number of characters in fullName within a string
+            Console.WriteLine("My name is {0} characters long.", fullName.Length);
+
+            //displays the characters in the given positions within a string
+            Console.WriteLine("The second and third characters of my name are {0}.",fullName.Substring(1,2));
+
+            //assigns & displays user input as a string using escaping characters to put the input in quotes
+            Console.Write("Enter a string: ");
+            string input = Console.ReadLine();
+            Console.WriteLine("Your input was \"{0}\".", input);
+
+            //converts user input from a sting to an integer using Parse method
+            Console.Write("Enter numeric data: ");
+            string strNumber1 = Console.ReadLine();
+            int intNumber1 = Int32.Parse(strNumber1);
+            
+            //converts user input from a sting to an integer using Convert class - also more completes assignment and conversion in same line.
+            Console.Write("Enter more numeric data: ");
+            int intNumber2 = Convert.ToInt32(Console.ReadLine());
+
+            //displays the numerical data of user input and adds them
+            Console.WriteLine("{0} + {1} = {2}", intNumber1, intNumber2, intNumber1 + intNumber2);
+
+            //displays the numerical data of user input and subtacts them
+            Console.WriteLine("{0} - {1} = {2}", intNumber1, intNumber2, intNumber1 - intNumber2);
+            //displays the numerical data of user input and multiplies them
+            Console.WriteLine("{0} * {1} = {2}", intNumber1, intNumber2, intNumber1 * intNumber2);
+            //displays the numerical data of user input and divides them
+            Console.WriteLine("{0} / {1} = {2}", intNumber1, intNumber2, intNumber1 / intNumber2);
+            //displays the numerical data of user input and finds the remainder
+            Console.WriteLine("{0} % {1} = {2}", intNumber1, intNumber2, intNumber1 % intNumber2);
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+    }
+}
