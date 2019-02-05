@@ -1,0 +1,45 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_inclass02
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /* in-class 02
+             * Numeric Output
+             * By: Becky Christanto
+             */
+
+            // Creates a single integer variable
+            int firstNumber = 5;
+
+            // Creates an integer variable that holds the postfix-incremented value of the first integer
+            int secondNumber = firstNumber++;
+
+            // Creates an integer that holds the prefix-incremented value of the first integer
+            int thirdNumber = ++firstNumber;
+
+            // Displays 3 integers with a blank line after
+            Console.WriteLine(firstNumber);
+            Console.WriteLine(secondNumber);
+            Console.WriteLine(thirdNumber);
+            Console.WriteLine();
+
+            // Operations
+            Console.WriteLine(firstNumber + secondNumber);
+            Console.WriteLine(firstNumber - secondNumber);
+            Console.WriteLine(thirdNumber * firstNumber);
+            Console.WriteLine(thirdNumber / secondNumber);
+            Console.WriteLine(thirdNumber % secondNumber);
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+    }
+}
