@@ -54,7 +54,7 @@ namespace bchristanto_inclass05
 
             //Asks the user what grade he or she would like to get and assigns the response to a variable
             Console.WriteLine("Enter the grade you want in the course: ");
-            string grade = Console.ReadLine();
+            string grade = Console.ReadLine().ToUpper;
 
             //Displays a response based on the grade entered
             switch (grade)
