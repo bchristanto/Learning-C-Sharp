@@ -1,0 +1,87 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_inclass05
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /*
+             * In Class 05
+             * Making Decisions (Conditionals)
+             * By: Becky Christanto
+             */
+            
+            //Call the random class
+            Random rng = new Random();
+            //Initialize the variable
+            int rNumber;
+            //Set constant maximum and minimum
+            const int MAX = 10;
+            const int MIN = 1;
+            //Assign a random number to the variable
+            rNumber = rng.Next(MIN, MAX + 1);
+            //Displays the random number
+            //Console.WriteLine(rNumber);
+
+            //Asks the user for numeric input and converts it to an integer
+            Console.WriteLine("Enter a number between {0} and {1}: ", MIN, MAX);
+            int answer = Convert.ToInt32(Console.ReadLine());
+            
+            //Checks if answer is inbounds
+            if (answer <MIN || answer > MAX)
+            {
+                Console.WriteLine("Your answer must be between {0} and {1}.",MIN,MAX);
+            }
+            
+            //Compares the answer to the random number and displays some output based on the result
+            else if (answer < rNumber)
+            {
+                Console.WriteLine("Sorry, your answer was too low. The answer was {0}.", rNumber);
+            }
+            else if(answer > rNumber)
+            {
+                Console.WriteLine("Sorry, your answer was too high. The answer was {0}.", rNumber);
+            }
+            else
+            {
+                Console.WriteLine("Congratulations! Your answer was correct!");
+            }
+
+            //Asks the user what grade he or she would like to get and assigns the response to a variable
+            Console.WriteLine("Enter the grade you want in the course: ");
+            string grade = Console.ReadLine();
+
+            //Displays a response based on the grade entered
+            switch (grade)
+            {
+                case "A":
+                    Console.WriteLine("You'll do great!");
+                    break;
+                case "B":
+                    Console.WriteLine("You will do just fine.");
+                    break;
+                case "C":
+                    Console.WriteLine("C's get degrees.");
+                    break;
+                case "D":
+                    Console.WriteLine("Think again.");
+                    break;
+                case "F":
+                    Console.WriteLine("You can do better.");
+                    break;
+                default:
+                    Console.WriteLine("I don't understand...");
+                    break;
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+    }
+}
