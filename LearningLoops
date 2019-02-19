@@ -1,0 +1,192 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_inclass06
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /*
+             * InClass_06
+             * Repetitive Actions (Looping)
+             * By: Becky Christanto 
+             */
+
+            //INTRO TO LOOPS
+            Console.WriteLine("INTRO TO LOOPS");
+
+            //WHILE LOOPS
+            Console.WriteLine("\"While\" Statement:");
+            Console.WriteLine("-----------------------");
+            //sets initial counter to 0
+            int counter = 0;
+            //sets the number of times the loop will run
+            const int LIMIT = 4;
+            string name = "Becky";
+            //displays the name for each run through the loop until the counter reaches the defined limit
+            while (counter < LIMIT)
+            {
+                Console.WriteLine("{0}: {1}", counter, name);
+                counter++;
+            }
+
+            //DO WHILE LOOPS
+            Console.WriteLine();
+            Console.WriteLine("\"Do... While\" Statement:");
+            Console.WriteLine("-----------------------");
+            //reset the counter
+            counter = 0;
+            //executes the statement (display name), then checks to see if the limit has been reached
+            do
+            {
+                Console.WriteLine("{0}: {1}", counter, name);
+                counter++;
+            }
+            while (counter < LIMIT);
+
+            //FOR LOOPS
+            Console.WriteLine();
+            Console.WriteLine("\"For\" Statement:");
+            Console.WriteLine("-----------------------");
+            //reset the counter
+            counter = 0;
+            //executes the statement (display name), then checks to see if the limit has been reached
+            for (int i = 0; i < LIMIT; i++)
+            {
+                Console.WriteLine("{0}: {1}", i, name);
+            }
+
+            //NESTING LOOPS
+            Console.WriteLine();
+            Console.WriteLine("Nested Statement:");
+            Console.WriteLine("----------------------------");
+            //Creates a table that shows the value of the numbers 1-5 multiplied together
+            for (int i = 1; i <= 5; i++)
+            {
+                for (int j = 1; j <= 5; j++)
+                {
+                    Console.Write("{0,5}", i * j);
+                    if (j == 5)
+                    {
+                        Console.WriteLine();
+                    }
+                }
+            }
+
+            //ACCUMULATING TOTALS
+            //define 3 total variables
+            int total_a = 0, total_b = 0, total_c = 0;
+            Console.WriteLine();
+            Console.WriteLine("Accumulation Loop:");
+            Console.WriteLine("------------------");
+            //increments total_a by the value i on each pass of the loop and displays the accumulated total
+            for (int i = 0; i < 10; ++i)
+            {
+                total_a += i;
+            }
+            Console.WriteLine("The total is {0}.", total_a);
+            Console.WriteLine();
+            Console.WriteLine("Break Loop:");
+            Console.WriteLine("------------------");
+            //increments total_a by the value i on each pass of the loop and displays the accumulated total, stops at 5
+            for (int i = 0; i < 10; ++i)
+            {
+                if (i == 5) break;
+                total_b += i;
+            }
+            Console.WriteLine("The total is {0}.", total_b);
+            Console.WriteLine();
+            Console.WriteLine("Continue Loop:");
+            Console.WriteLine("------------------");
+            //increments total_c by the value i on each pass of the loop and displays the accumulated total, but skips 5
+            for (int i = 0; i < 10; ++i)
+            {
+                if (i == 5) continue;
+                total_c += i;
+            }
+            Console.WriteLine("The total is {0}.", total_c);
+
+            //GUESSING GAME
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("GUESSING GAME");
+            Console.WriteLine("------------------");
+
+            bool keepGoing = true;
+
+            do
+            {
+                //Defines constants for a minimum and maximum value for the game
+                const int MIN = 1;
+                const int MAX = 10;
+                //Generates a random integer within the minimum and maximum values
+                Random random = new Random();
+                int answer = random.Next(MIN, MAX + 1);
+                //Declares one integer to count the number of guesses
+                int count = 0;
+                //Declares two variables to hold the highest and lowest viable guesses
+                int high_guess = MAX;
+                int low_guess = MIN;
+
+                while (true)
+                {
+                    count++; //tracks the number of guesses
+                    Console.WriteLine("Guess a number between {0} and {1}", MIN, MAX);
+                    int guess = Convert.ToInt32(Console.ReadLine()); //converts guess string to int and assigns to variable
+                    //Compare the integer to the random number and to the highest and lowest viable guesses and display MessageBoxes with appropriate message
+                    if (guess > MAX || guess < MIN)
+                    {
+                        Console.WriteLine("Your guess must be between {0} and {1}.", MIN, MAX);
+                    }
+                    else if (guess > answer)
+                    {
+                        if (guess > high_guess)
+                        {
+                            Console.WriteLine("I've already told you {0} is too high." +
+                                "\nDon't guess higher than {0}.", high_guess);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Your guess was too high.");
+                            high_guess = guess;
+                        }
+                    }
+                    else if (guess < answer)
+                    {
+                        if (guess < low_guess)
+                        {
+                            Console.WriteLine("I've already told you {0} is too low." +
+                                "\nDon't guess lower than {0}.", low_guess);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Your guess was too low.");
+                            low_guess = guess;
+                        }
+                    }
+                    else //let's the guesser know they got the answer and how many tries it takes
+                    {
+                        Console.WriteLine("That is the correct answer!" +
+                            "\nThe answer was {0}." +
+                            "\nYou got it right in {1} guesses.", answer, count);
+                        break;
+                    }
+
+                    
+
+                }
+                Console.WriteLine("Would you like to play again?"); //Asks the user if he/she would like to play again
+                keepGoing = (Console.ReadLine().ToUpper() == "Y");
+            } while (keepGoing);
+        
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+    }
+}
