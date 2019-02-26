@@ -1,0 +1,151 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_inclass07
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /*
+             * In-Class Assignment 07
+             * Using Arrays
+             * By: Becky Christanto
+             */
+
+            //Create an integer array of at least 7, randomly - designated numbers
+            int[] numbers = new int[9] { 9, 13, 23, 37, 11, 19, 17, 2, 3 };
+            
+            //Create an integer array of 3 - 5 numbers to hold ages
+            int[] ages = new int[5] { 30, 39, 1, 5, 9 };
+            
+            //Create a string array of the same size to hold names
+            string[] names = new string[5] {"Becky", "Rully", "Peanut", "Paisley", "Penny"};
+            
+            //Display one person’s name and age
+            Console.WriteLine("The age of {0} is {1} year(s).",names[2],ages[2]);
+            Console.WriteLine();
+            
+            //Create two integer variables to hold accumulated totals
+            int total_a = 0, total_b = 0;
+            
+            //Accumulate the numbers in Step 1 using a for loop
+            for(int i = 0; i < numbers.Length; ++i)
+            {
+                total_a += numbers[i];
+            }
+            
+            //Display the total and average using total / Length
+            Console.WriteLine("The total is {0} and the average is {1}.", total_a, total_a / numbers.Length);
+            Console.WriteLine();
+            
+            //Use a for loop to display all of the names and ages
+            for(int i = 0; i < ages.Length; ++i)
+            {
+                Console.WriteLine("The age of {0} is {1} year(s).", names[i],ages[i]);
+            }
+            Console.WriteLine();
+
+            //Accumulate the numbers in Step 1 using a foreach loop
+            foreach(int number in numbers)
+            {
+                total_b += number;
+            }
+
+            //Display the total and average using total / Length
+            Console.WriteLine("The total is {0} and the average is {1}.", total_b, total_b / numbers.Length);
+            Console.WriteLine();
+
+            //Create a Boolean and set it to false
+            bool isFound = false;
+
+            //Loop through the numbers array(Step 1) and search for a number
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if(numbers[i] == 19)
+                {
+                    isFound = true;
+                    break;
+                }
+            }
+            
+            //Display a message if the number was found or not
+            if (isFound)
+            {
+                Console.WriteLine("I found the number.");
+            }
+            else
+            {
+                Console.WriteLine("I couldn't find the number.");
+            }
+            Console.WriteLine();
+
+            //Create two arrays to hold the sorted and reversed arrays and copy the numbers array(Step 1) into those arrays
+            int[] sortNumbers = new int[numbers.Length];
+            int[] revNumbers = new int[numbers.Length];
+
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                sortNumbers[i] = numbers[i];
+                revNumbers[i] = numbers[i];
+            }
+
+            //Sort and Reverse those arrays
+            Array.Sort(sortNumbers);
+            Array.Reverse(revNumbers);
+
+            //Display all three arrays
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Console.WriteLine("{0,10} - {1,10} - {2,10}",numbers[i],sortNumbers[i],revNumbers[i]);
+            }
+            Console.WriteLine();
+
+            //Use BinarySearch to determine if two numbers are in the sorted array - One number should be in the array; one should not
+            int[] test = new int[2] { 17, 20 };
+            foreach(int t in test)
+            {
+                int index = Array.BinarySearch(sortNumbers, t);
+
+                if(index >= 0)
+                {
+                    Console.WriteLine("I found the number {0} at index {1}.", t, index);
+                }
+                else
+                {
+                    Console.WriteLine("I could not find the number {0}.",t);
+                }
+            }
+            Console.WriteLine();
+
+            //Create a two-dimensional array and display it using the GetLength(**axis**) method and nested looping
+            int[,] price = new int[4, 3]
+            {
+                {400, 450, 510 },
+                {500, 560, 630 },
+                {625, 675, 740 },
+                {1000, 1250, 1600}
+            };
+
+            for (int i = 0; i < price.GetLength(0); i++)
+            {
+                Console.WriteLine("Floor: {0}",i+1);
+                Console.WriteLine("-------------------------------");
+
+                for (int j = 0; j < price.GetLength(1); j++)
+                {
+                    Console.WriteLine("Bedrooms: {0} - Price: {1,10}",j, price[i,j].ToString("C"));
+                }
+                Console.WriteLine();
+            }
+            
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+    }
+}
