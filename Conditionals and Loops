@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace bchristanto_homeworkassignment02
+/*
+ * Homework Assignment 02
+ * Conditionals and Loops
+ * By: Becky Christanto
+ */
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        //Submit Button Controls
+        private void buttonSubmit_Click(object sender, EventArgs e)
+        {
+            //Creates an array of five strings to hold the names
+            string[] names = new string[5];
+            names[0] = txtName1.Text;
+            names[1] = txtName2.Text;
+            names[2] = txtName3.Text;
+            names[3] = txtName4.Text;
+            names[4] = txtName5.Text;
+
+            //Create an array of five ints to hold the ages and converts to integers
+            int[] ages = new int[5];
+            ages[0] = Convert.ToInt32(txtAge1.Text);
+            ages[1] = Convert.ToInt32(txtAge2.Text);
+            ages[2] = Convert.ToInt32(txtAge3.Text);
+            ages[3] = Convert.ToInt32(txtAge4.Text);
+            ages[4] = Convert.ToInt32(txtAge5.Text);
+
+            //Using Parallel Array principles, displays the five names and ages in the RichTextBox
+            for (int i = 0; i < names.Length; i++)
+            {
+                rTxtSolutions.Text += String.Format("{0} is {1} year(s) old.\n",names[i],ages[i]);
+            }
+            Console.WriteLine();
+            
+            //Loops through the ages and accumulate the total, displays the total and averages
+            int totalAges = 0;
+            for (int i = 0; i < ages.Length; i++)
+            {
+                totalAges += ages[i];
+            }
+            rTxtSolutions.AppendText(string.Format("The sum of the ages is {0}.\nThe average age is {1}.", totalAges, totalAges / ages.Length));
+        }
+        //Reset Button Control clears the Textboxes
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            txtAge1.Text = "";
+            txtAge2.Text = "";
+            txtAge3.Text = "";
+            txtAge4.Text = "";
+            txtAge5.Text = "";
+            txtName1.Text = "";
+            txtName2.Text = "";
+            txtName3.Text = "";
+            txtName4.Text = "";
+            txtName5.Text = "";
+            rTxtSolutions.Text = "";
+        }
+    }
+}
