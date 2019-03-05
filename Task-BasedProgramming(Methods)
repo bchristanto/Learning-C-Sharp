@@ -1,0 +1,109 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_inclass08
+{
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
+
+            /*
+             * In Class 08
+             * Task-Based Programming (Methods)
+             * By: Becky Christanto
+             */
+
+            string name = "Penny";
+            int age = 9;
+
+            //calls variable from main method and DisplayInformation method to show variable scope
+            Console.WriteLine("Name: {0} - Age {1}", name, age);
+            DisplayInformation();
+
+            //displays age as a reference for the variable used in the methods below
+            Console.WriteLine();
+            Console.WriteLine("Age: {0}", age);
+            Console.WriteLine("-----------------");
+           
+            //Calls the methods using a variable parameter defined in the main method
+            DisplaySquare(age);
+            DisplayBothVariables(name, age);
+            int doubleAge = GetAgeTimesTwo(age);
+            Console.WriteLine("Double Age: {0}", doubleAge);
+            
+            //creates new array of "numbers" and displays the array
+            Console.WriteLine();
+            int[] numbers = new int[5] { 39, 30, 9, 5, 1 };
+            DisplayArray(numbers);
+            
+            //displays the square of the indicated element
+            Console.WriteLine();
+            DisplaySquare(numbers[2]);
+            //shows no change to "numbers" array
+            Console.WriteLine();
+            DisplayArray(numbers);
+            
+            //modifies the "numbers" array to square each item
+            Console.WriteLine();
+            DisplaySquares(numbers);
+            //shows changed to "numbers" array
+            Console.WriteLine();
+            DisplayArray(numbers);
+
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+
+        static void DisplayInformation()
+        {
+            string name = "Becky";
+            int age = 30;
+
+            Console.WriteLine("Name: {0} - Age {1}", name, age);
+        }
+
+        static void DisplaySquare(int number)
+        {
+            number = number * number;
+
+            Console.WriteLine("Number Squared: {0}", number);
+        }
+
+        static void DisplayBothVariables(string word, int number)
+        {
+            Console.WriteLine("Word: {0} - Number: {1}", word, number);
+        }
+
+        static int GetAgeTimesTwo(int number)
+        {
+            return number * 2;
+        }
+
+        static void DisplayArray(int[] array)
+        {
+            foreach(int a in array)
+            {
+                Console.WriteLine(a);
+            }
+        }
+
+        static void DisplaySquares(int[] integers)
+        {
+            DisplayArray(integers);
+            Console.WriteLine();
+            for(int i=0; i < integers.Length; ++i)
+            {
+                integers[i] = integers[i] * integers[i];
+            }
+            Console.WriteLine();
+            DisplayArray(integers);
+        }
+    }
+}
