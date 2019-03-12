@@ -1,0 +1,164 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_inclass09
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /*
+             * In Class Assignment 09
+             * Advanced Methods
+             * By: Becky Christanto
+             */
+
+
+            int number = 39;
+            //Pass through value - demonstrates how method outside Main make a copy of the variable, but do not change the value of the variable within the Main method
+            DisplayInformation("Main", "Before", number);
+            PassByValue(number);
+            DisplayInformation("Main", "After", number);
+
+            //REF calls the variable by reference and makes a change within the Main method - requires a pre-defined value
+            Console.WriteLine();
+            Console.WriteLine("Ref Keyword");
+            Console.WriteLine("-------------------------------");
+            DisplayInformation("Main", "Before", number);
+            UseRefParameter(ref number);
+            DisplayInformation("Main", "After", number);
+
+            //OUT can be used without a prior value
+            Console.WriteLine();
+            Console.WriteLine("Out Keyword");
+            Console.WriteLine("-------------------------------");
+            DisplayInformation("Main", "Before", number);
+            UseOutParameter(out number);
+            DisplayInformation("Main", "After", number);
+
+            //how to accept/convert variables of different data types
+            Console.WriteLine();
+            Console.WriteLine("Using a built in 'out' method");
+            Console.WriteLine("-------------------------------");
+            //Try parse code to test for acceptable input
+            do
+            {
+                Console.Write("Enter a number: ");
+                string strAnswer = Console.ReadLine();
+                int answer;
+
+                if (Int32.TryParse(strAnswer, out answer))
+                {
+                    Console.WriteLine("{0} is a valid number.", answer);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("{0} is not a valid number.", strAnswer);
+                }
+            } while (true);
+
+            //accepts string array and formats grammatically based on string length
+            Console.WriteLine();
+            Console.WriteLine("Display Arrays: ");
+            Console.WriteLine("-------------------------------");
+            string[] names = new string[5] { "Rully", "Becky", "Penny", "Paisley", "Peanut" };
+            DisplayArray(names);
+            DisplayArray("Kim", "Kevin", "Andy");
+            DisplayArray("Nancy", "Kevin");
+            DisplayArray("Milly");
+
+            //calls methods named the same thing to show the difference when input is different data types
+            Console.WriteLine();
+            Console.WriteLine("Overloaded Methods: ");
+            Console.WriteLine("-------------------------------");
+            OverloadedMethod("CIS 2023 is awesome!");
+            OverloadedMethod(2023);
+
+            //method defines default parameters, second (etc) calls shows how to overwrite default values
+            Console.WriteLine();
+            Console.WriteLine("Default Parameters: ");
+            Console.WriteLine("-------------------------------");
+            Console.Write("Default: ");
+            UseDefaultParameters();
+            Console.Write("Change both: ");
+            UseDefaultParameters(39, "Rully");
+            Console.Write("Change name only: ");
+            UseDefaultParameters(name: "Logan");
+            Console.Write("Change number only: ");
+            UseDefaultParameters(2);
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+
+        static void DisplayInformation(string method, string timing, int number)
+        {
+            Console.WriteLine("Name of Method: {0,25} - {1,10} change - {2}", method, timing, number);
+        }
+
+        static void PassByValue(int n)
+        {
+            DisplayInformation("Pass By Value", "Before", n);
+            n = 30;
+            DisplayInformation("Pass By Value", "After", n);
+
+        }
+
+        static void UseRefParameter(ref int n)
+        {
+            DisplayInformation("UseRefParamater", "Before", n);
+            n = 42;
+            DisplayInformation("UseRefParamater", "After", n);
+        }
+
+        static void UseOutParameter(out int n)
+        {
+            n = 9;
+            DisplayInformation("UseOutParamater", "After", n);
+        }
+
+        static void DisplayArray(params string[] names)
+        {
+            for(int i = 0; i< names.Length; ++i)
+            {
+                if(names.Length > 1 && i == names.Length - 1)
+                {
+                    if (names.Length == 2)
+                    {
+                        Console.Write(" ");
+                    }
+                    Console.Write("and ");
+                }
+
+                Console.Write(names[i]);
+
+                if(names.Length > 2 && i != names.Length - 1)
+                {
+                    Console.Write(", ");
+                }
+            }
+
+            Console.WriteLine("\n~~~");
+        }
+
+        static void OverloadedMethod(string name)
+        {
+            Console.WriteLine("You entered a string: {0}", name);
+        }
+
+        static void OverloadedMethod(int number)
+        {
+            Console.WriteLine("You entered a number: {0}", number);
+        }
+
+        static void UseDefaultParameters(int number = 1, string name = "Peanut")
+        {
+            Console.WriteLine("{0} and {1}", number, name);
+        }
+    }
+}
