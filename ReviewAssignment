@@ -1,0 +1,132 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_homeworkassignment04
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /*
+             * Homework Assignment 04
+             * Review Assignment
+             * By: Becky Christanto
+             */
+
+            //Constant Integer called ARRAY_SIZE and assign it a value of your choosing
+            const int ARRAY_SIZE = 5;
+            
+            //String called myName that holds your name
+            string myName = "Becky Christanto";
+            
+            //Integer called myAge that holds your age
+            int myAge = 30;
+            
+            //Integer called totalAge and set it equal to zero
+            int totalAge = 0;
+            
+            //String array called names that is set to the ARRAY_SIZE size
+            string[] names = new string[ARRAY_SIZE];
+            
+            //Integer array called ages that is set to the ARRAY_SIZE size
+            int[] ages = new int[ARRAY_SIZE];
+            
+            //Display the myName and myAge variables in an output
+            Console.WriteLine("Name name is {0}, and I am {0} years old.",myName,myAge);
+            Console.WriteLine();
+
+            //Create a loop, using the ARRAY_SIZE as the terminating clause
+            for (int i = 0; i < ARRAY_SIZE; ++i)
+            {
+                //Ask the user for a name
+                Console.Write("Enter a name for Person #{0}: ",i+1);
+
+                //Store this name in the names array
+                names[i] = Console.ReadLine();
+
+                //Use this name in the GetValidAge method and set that value to the ages array
+                ages[i] = GetValidAge(names[i]);
+
+                //Accumulate the ages using the totalAges 
+                totalAge += ages[i];
+            }
+            //Call the DisplayArrays method, passing in the names and ages arrays
+            Console.WriteLine();
+            DisplayArrays(names, ages);
+
+            //Display a line showing the totalAge
+            Console.WriteLine();
+            Console.WriteLine("The total age of those {0} people is {1}.", ARRAY_SIZE, totalAge);
+
+            //Display a line showing the average age – using Decimal or Double casting
+            Console.WriteLine("Their average age is {0}.",(double)totalAge/(double)ARRAY_SIZE);
+
+            //Call the EndProgram method
+            EndProgram();
+
+
+
+
+
+        }
+        //Create the following methods:
+        //A static void called EndProgram that accepts no parameters
+        private static void EndProgram()
+        {
+            Console.WriteLine();
+            Console.WriteLine("----------------------");
+            Console.WriteLine("Press any key to exit.");
+            Console.ReadKey();
+        }
+        
+        //A static void called DisplayArrays that accepts a string array called names and an integer array called ages
+        private static void DisplayArrays(string[] names, int[] ages)
+        {
+            if (names.Length == ages.Length) //Compares the length of the two arrays
+            {
+                //If they are the same length, loop through the array and display the names and ages of the people in the arrays
+                for(int i = 0; i < names.Length; ++i)
+                {
+                    Console.WriteLine("Person #{0,3} - Name: {1,10} - Age{2,3}",i+1,names[i],ages[i]);
+                }
+            }
+            else //If the arrays are not the same length, display a line that says the arrays are not valid
+            {
+                Console.WriteLine("Sorry, the arrays are not valid.");
+            }
+        }
+        
+        //A static integer called GetValidAge that accepts a string called name
+        private static int GetValidAge(string name)
+        {
+            //Create an integer called age and assign it a value of 0
+            int age = 0;
+            
+            //In a while or do… while loop, ask the user how old the person is, using the person’s name that was passed in as the parameter
+            do
+            {
+                Console.Write("How old is {0}? ", name);
+                //Store the user input as a string called input
+                string input = Console.ReadLine();
+                
+                //Use the TryParse method to determine if the input is an integer
+                if (Int32.TryParse(input, out age))
+                {
+                    break;//If it is, break the loop
+                }
+                else//If it is not, display a message saying it is not a valid number
+                {
+                    Console.WriteLine("\"{0}\" is not a valid input.", input);
+                    Console.WriteLine("Please enter a valid age in years.");
+                }
+            } while (true);
+
+            //Return the age variable
+            return age;
+        }
+        
+    }
+}
