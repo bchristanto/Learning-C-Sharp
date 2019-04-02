@@ -1,0 +1,76 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_inclass11
+{
+    class Person
+    {
+        //properties are conventionally private
+        private string _name;
+        private int _age;
+        private bool _isAdult;
+        //public as it will be modified based on the number of instances
+        public static int numOfPersons = 0;
+        //constant for each instance
+        private readonly int _personID;
+
+
+        //constructor is conventionally placed after attributes, before methods
+        public Person() : this("Yoda", 900)
+        {
+            Console.WriteLine("You created a person without a name or age.");
+        }
+
+        //polymorphism
+        public Person(string name, int age)
+        {
+            numOfPersons++;
+            this._personID = numOfPersons + 7000;
+            this.Name = name;
+            this.Age = age;
+        }
+        //destructor
+        ~Person()
+        {
+            Console.WriteLine("You destroyed a person.");
+        }
+
+        public string Name { get; set; }
+        /*{ get { return this._name;}
+            set { this._name = value; } }*/
+
+        public int Age
+        {
+            get {return this._age; }
+            set
+            {
+                if (value < 0)
+                {
+                    Console.WriteLine("Age cannot be less than 0.");
+                    this._age = 0;
+                }
+                else
+                {
+                    this._age = value;
+                }
+
+                this._age = Age;
+                this._isAdult = ( this._age >= 18);
+            }
+        }
+        public int PersonID { get { return this._personID; } }
+
+        public string GreetFriend()
+        {
+            return String.Format("Person # {2} is named {0} and is {1} years old.", this.Name, this.Age, this._personID);
+        }
+
+        public static int operator+(Person p1, Person p2)
+        {
+            return p1.Age + p2.Age;
+        }
+    }
+}
