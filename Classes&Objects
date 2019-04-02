@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_inclass11
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /*
+             * In Class Assignment 11
+             * Classes and Objects
+             * By: Becky Christanto
+             */
+            
+            //creates a new object of class Person
+            Person p = new Person();
+
+            //calls method from Person class using dot notation (text before the dot is an object or class)
+            Console.WriteLine(p.GreetFriend());
+
+            //Console.WriteLine(p._name); ** not accessible because it is private to the Person class
+            
+
+            Person p2 = new Person("Becky", 31);
+            Console.WriteLine(p2.GreetFriend());
+
+            Console.WriteLine("You have created {0} person(s).",Person.numOfPersons);
+
+            p.Name = "Chewbacca";
+            Console.WriteLine("The person's name is {0}.",p.Name);
+
+            Person p3 = new Person("Joey", -5);
+
+            Person[] persons = new Person[4] { new Person("Sarah", 40), new Person("Carmen", 14), p3, p2 };
+
+            for(int i = 0; i < persons.Length; ++i)
+            {
+                Console.WriteLine("ID#: {0,5} - Name: {1,10} - Age: {2}",persons[i].PersonID,persons[i].Name,persons[i].Age);
+            }
+
+            Console.WriteLine("The combined age of {0} and {1} is {2} years.",persons[0].Name,persons[1].Name,persons[1]+persons[0]);
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit..");
+            Console.ReadKey();
+        }
+    }
+}
