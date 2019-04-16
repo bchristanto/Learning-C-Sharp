@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_inclass13
+{
+    class Trip
+    {
+        private decimal _gallons;
+        private decimal _miles;
+
+        public Trip()
+        {
+            Miles = 1;
+            Gallons = 1;
+        }
+
+        public decimal Miles
+        {
+            get { return _miles; }
+            set { _miles = value; }
+        }
+
+        public decimal Gallons
+        {
+            get { return _gallons; }
+            set
+            {
+                if (value <= 0)
+                {
+                    _gallons = 1;
+                    throw (new GallonsZeroException());
+                }
+                else
+                {
+                    _gallons = value;
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            return String.Format("Your trip used {0} MPG.", Miles/Gallons);
+        }
+    }
+}
