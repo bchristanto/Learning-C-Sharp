@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using bchristanto_inclass11;
+
+namespace bchristanto_inclass12
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /*
+             * In Class Assignment 12
+             * Class Inheritance
+             * By: Becky Christanto
+             */
+
+            Student s = new Student{Name = "Becky", Age = 31};
+            Student p = new Student { Name = "Greg", Age = 40 };
+            Console.WriteLine(s.GreetFriend());            
+            Console.WriteLine(p.GreetFriend());
+
+            Console.WriteLine();
+            Console.WriteLine(s);
+            Console.WriteLine(p.ToString());
+
+            Student s2 = new Student("Luke", 17);
+            Console.WriteLine(s2.ToString());
+
+            Console.WriteLine();
+            Console.WriteLine(s.Speak());
+
+            Console.WriteLine();
+            Console.WriteLine(s.SayFarewell());
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+    }
+}
