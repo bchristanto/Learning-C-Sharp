@@ -1,0 +1,92 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_homeworkassignment05
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            /*
+             * Homework Assignment 05
+             * Object-Oriented Concepts
+             * By: Becky Christanto
+             */
+
+            Console.WriteLine("RECTANGLES");
+            //Create one default Rectangle called r1
+            Rectangle r1 = new Rectangle();
+
+            //Create one defined Rectangle called r2 and set its length and width to some numbers
+            Rectangle r2 = new Rectangle(4,5);
+
+            //Display both the areas and perimeters of both rectangles
+            Console.WriteLine();
+            Console.WriteLine("Rectangle 1");
+            Console.WriteLine("------------");
+            Console.WriteLine(r1.DisplayArea());
+            Console.WriteLine(r1.DisplayPerimeter());
+            Console.WriteLine();
+
+            Console.WriteLine("Rectangle 2");
+            Console.WriteLine("------------");
+            Console.WriteLine(r2.DisplayArea());
+            Console.WriteLine(r2.DisplayPerimeter());
+            Console.WriteLine();
+
+            //Use the Setter of the Rectangle class to change at least one value of one of the Rectangles
+            r2.Length = 3.29;
+            r2.Width = 4.5;
+
+            //Display the new area and perimeter of the changed rectangle
+            Console.WriteLine("Rectangle 2");
+            Console.WriteLine("(Modified)");
+            Console.WriteLine("------------");
+            Console.WriteLine(r2.DisplayArea());
+            Console.WriteLine(r2.DisplayPerimeter());
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("SQUARES");
+
+            //Create one default Square called s1
+            Square s1 = new Square();
+
+            //Create one defined Square called r2 and set its side length to some number
+            Square s2 = new Square(4);
+
+            //Display both the areas and perimeters of both squares
+            Console.WriteLine();
+            Console.WriteLine("Square 1");
+            Console.WriteLine("------------");
+            Console.WriteLine(s1.DisplayArea());
+            Console.WriteLine(s1.DisplayPerimeter());
+            Console.WriteLine();
+
+            Console.WriteLine("Square 2");
+            Console.WriteLine("------------");
+            Console.WriteLine(s2.DisplayArea());
+            Console.WriteLine(s2.DisplayPerimeter());
+            Console.WriteLine();
+
+            //Use the Setter of the Rectangle class to change at least one value of one of the Rectangles
+            s2.Length = 3.29;
+
+            //Display the new area and perimeter of the changed rectangle
+            Console.WriteLine("Square 2");
+            Console.WriteLine("(Modified)");
+            Console.WriteLine("------------");
+            Console.WriteLine(s2.DisplayArea());
+            Console.WriteLine(s2.DisplayPerimeter());
+
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+}
+}
