@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using bchristanto_inclass11;
+
+namespace bchristanto_inclass12
+{
+    class Student : Person, ISpeakable
+    {
+        public Student() : base() { }
+        public Student(string name, int age) : base(name,age) { }
+        
+        public string ClassLevel
+        {
+            get
+            {
+                if(_level == 1){ return "Freshman";}
+                if(_level == 2){ return "Sophomore";}
+                else {return "Unknown";}
+            }
+            set
+            {
+                if (value == "Freshman") { _level = 1; }
+                else if (value == "Sophomore") { _level = 2; }
+                else { _level = 0; }
+            }
+        }
+
+        public override string GreetFriend()
+        {
+            return base.GreetFriend() + String.Format(" My Student ID is {0}.", PersonID);
+        }
+
+        public override string ToString()
+        {
+            return String.Format("{0}, {1}, {2}, {3}", PersonID, Name, Age, ClassLevel);
+        }
+
+        public override string SayFarewell()
+        {
+            return String.Format("Goodbye...");
+        }
+
+        public string Speak()
+        {
+            return String.Format("I am currently taking CIS 2023.");
+        }
+    }
+}
