@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_homeworkassignment05
+{
+    class Square : Shape
+    {
+        /*This class will contain:
+        *One numeric property (same as above) to hold the length of the sides
+        *A Constructor that accepts no parameters and assigns an appropriate value for the length (for instance 1)
+        *A Constructor that accepts one numeric parameter that matches the data type of the property
+        *An accessor and mutator for the side length property
+        *Definitions for the DisplayArea() and DisplayPerimeter() methods that return appropriate strings displaying the area or perimeter
+            Note: Area of a Square is length squared
+            Note: Perimeter of a Square is length times four
+         */
+
+        private double _length;
+
+        public Square() : this(1)
+        {
+            Console.WriteLine("Square arguement is the length of a side.");
+        }
+
+        public Square(double length)
+        {
+            this.Length = length;
+        }
+
+        public double Length { get; set; }
+
+        public override string DisplayArea()
+        {
+            return String.Format("The area is {0} square unit(s).", Length * Length);
+        }
+
+        public override string DisplayPerimeter()
+        {
+            return String.Format("The permiter is {0} unit(s).", 4 * Length);
+        }
+
+    }
+}
