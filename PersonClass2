@@ -1,0 +1,73 @@
+Updated for Class Inheritance
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_inclass11
+{
+    public abstract class Person
+    {
+        private string _name;
+        private int _age;
+        private bool _isAdult;
+        public static int numOfPersons = 0;
+        private readonly int _personID;
+
+        protected int _level;
+
+        public Person() : this("Yoda", 900)
+        {
+            Console.WriteLine("You created a person without a name or age.");
+        }
+
+        public Person(string name, int age)
+        {
+            numOfPersons++;
+            this._personID = numOfPersons + 7000;
+            this.Name = name;
+            this.Age = age;
+        }
+
+        ~Person()
+        {
+            Console.WriteLine("You destroyed a person.");
+        }
+
+        public string Name { get; set; }
+
+        public int Age
+        {
+            get {return this._age; }
+            set
+            {
+                if (value < 0)
+                {
+                    Console.WriteLine("Age cannot be less than 0.");
+                    this._age = 0;
+                }
+                else
+                {
+                    this._age = value;
+                }
+
+                this._age = Age;
+                this._isAdult = ( this._age >= 18);
+            }
+        }
+        public int PersonID { get { return this._personID; } }
+
+        public virtual string GreetFriend()
+        {
+            return String.Format("My name is {0}, and I am {1} years old.", this.Name, this.Age);
+        }
+
+        public static int operator+(Person p1, Person p2)
+        {
+            return p1.Age + p2.Age;
+        }
+
+        public abstract string SayFarewell();
+    }
+}
