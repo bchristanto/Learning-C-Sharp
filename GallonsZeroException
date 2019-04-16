@@ -1,0 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_inclass13
+{
+    class GallonsZeroException : Exception
+    {
+        private static string message = "Gallons cannot be less than zero.";
+        public GallonsZeroException() : base(message)
+        {
+            //this.HResult = 1;
+        }
+    }
+}
