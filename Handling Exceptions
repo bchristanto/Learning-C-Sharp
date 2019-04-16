@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_inclass13
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            /* In Class Assignment 13
+             * Handling Exceptions
+             * By: Becky Christanto
+             */
+
+            bool keepGoing = true;
+
+            while (keepGoing)
+            {
+                try
+                {
+                    Trip t = new Trip();
+                    Console.Write("How many miles was your trip? ");
+                    t.Miles = Decimal.Parse(Console.ReadLine());
+
+                    Console.Write("How many gallons did you use? ");
+                    t.Gallons = Decimal.Parse(Console.ReadLine());
+
+                    Console.WriteLine(t.ToString());
+                }
+                catch (DivideByZeroException ex)
+                {
+                    Console.WriteLine("You cannot divide by zero.");
+                    Console.WriteLine("Error occured: {0}.", ex.HResult.ToString("X"));
+                    Console.WriteLine("Error occured: {0}.", ex.HResult);
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("Please enter numeric inputs only.");
+                    Console.WriteLine("Error occured: {0}.", ex.Message);
+                }
+                catch (OverflowException ex)
+                {
+                    Console.WriteLine("Where are you driving??");
+                    Console.WriteLine("Max input is {0}.", Decimal.MaxValue);
+                    Console.WriteLine(ex.ToString());
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Oops! Please try again.");
+                    Console.WriteLine("Error occured: {0}.", ex.Message);
+                }
+                
+                finally
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Would you like to go again? Press \"n\" to exit.");
+                    if (Console.ReadLine() == "n") keepGoing = false;
+                }
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+    }
+}
