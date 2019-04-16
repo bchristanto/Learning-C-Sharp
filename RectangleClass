@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace bchristanto_homeworkassignment05
+{
+    class Rectangle : Shape 
+    {
+
+        /*This class will contain:
+        *Two numeric properties (int, double, decimal, your choice) to hold the length and width
+        *A Constructor that accepts no parameters and assigns appropriate values for the length and width (for instance, 1 and 2, respectively)
+        *A Constructor that accepts two numeric parameters that matches the data type of the properties
+        *Accessors and Mutators (getters and setters) for the two properties
+        *Definitions for the DisplayArea() and DisplayPerimeter() methods that return the appropriate strings displaying the area or perimeter
+            Note: Area of a Rectangle is length times width
+            Note: Perimeter of a Rectangle is two times length plus two times width
+        */
+
+        private double _length;
+        private double _width;
+
+        public Rectangle() : this(1, 2)
+        {
+            Console.WriteLine("Rectangle arguements are length and width.");
+        } 
+
+        public Rectangle(double length, double width)
+        {
+            this.Length = length;
+            this.Width = width;
+        }
+
+        public double Length { get; set; }
+        public double Width { get; set; }
+
+        public override string DisplayArea()
+        {
+            return String.Format("The area is {0} suqare unit(s).", Length * Width);
+        }
+
+        public override string DisplayPerimeter()
+        {
+            return String.Format("The permiter is {0} unti(s).", (2*Length) + (2*Width));
+        }
+    }
+}
