@@ -1,0 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace example
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            string[] names_array = new string[] { "John", "Robby", "Jessica" , "John","Rory" };
+            List<string> names = new List<string>(names_array);
+
+            foreach (string n in names)
+            {
+                Console.WriteLine(n);
+            }
+
+            Console.WriteLine();
+            names.Add("David");
+            names.AddRange(new string[]{"Lisa", "Andrew"});
+
+            for(int i = 0; i<names.Count; i++)
+            {
+                Console.WriteLine("{0} : {1}", i, names[i]);
+            }
+            Console.WriteLine("There are {0} names in the list.", names.Count);
+
+            Console.WriteLine();
+            Console.WriteLine(names.Contains("John"));
+            Console.WriteLine(names.Contains("Kim"));
+            Console.WriteLine(names.IndexOf("Rory"));
+            Console.WriteLine(names.IndexOf("George"));
+
+            names.Remove("David");
+
+            Console.WriteLine();
+            for (int i = 0; i < names.Count; i++)
+            {
+                Console.WriteLine("{0} : {1}", i, names[i]);
+            }
+            Console.WriteLine("There are {0} names in the list.",names.Count);
+
+            Console.WriteLine();
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+    }
+}
