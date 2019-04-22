@@ -44,6 +44,24 @@ namespace example
             }
             Console.WriteLine("There are {0} names in the list.",names.Count);
 
+            Dictionary<int, string> Students = new Dictionary<int, string>();
+            Students.Add(1, "Martha");
+            Students.Add(2, "Mary Lou");
+            Students.Add(3, "Judy");
+            Students.Add(4, "Bill");
+            Students.Add(5, "Janice");
+            Students.Add(6, "Betty");
+            Students.Add(7, "Nancy");
+            Students.Add(8, "Joyce");
+            Students.Add(9, "John");
+
+            Console.WriteLine();
+            foreach(var S in Students)
+            {
+                Console.WriteLine("Key: {0} - Value: {1}", S.Key, S.Value);
+            }
+
+
             Console.WriteLine();
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
